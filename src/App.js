@@ -5,6 +5,7 @@ import Login from "./Route/Login";
 import SignUp from "./Route/SignUp";
 import DashBoard from "./Route/DashBoard";
 import CreatePost from "./Route/CreatePost";
+import PostId from "./Route/PostId";
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route path="/post">
           <CreatePost />
+        </Route>
+        <Route path="/postId">
+          <PostId />
         </Route>
       </Switch>
     </Router>

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import "../App.css";
 
 const DashBoard = () => {
+  var item;
   const location = useLocation();
   const nanda = location.state.tags || location.state.off;
   const [profile, getProfile] = useState({});
@@ -80,6 +81,9 @@ const DashBoard = () => {
       }, 800);
     });
   };
+  const componentHandler = (item) => {
+    history.push(`/postId/${item}`, { locationId: item, pwd: nanda });
+  };
 
   return (
     <div>
@@ -115,9 +119,15 @@ const DashBoard = () => {
         </div>
       )}
       {result && (
-        <div>
+        <div className="component">
           {result.map((item) => (
-            <div key={item._id} className="RESULT">
+            <div
+              key={item._id}
+              className="RESULT"
+              onClick={() => {
+                componentHandler(item._id);
+              }}
+            >
               <p>Name : {item.ownerName}</p>
               <p> Travel date :{item.startDate}</p>
               <p> Age :{item.ownerAge}</p>
@@ -131,6 +141,12 @@ const DashBoard = () => {
       <Link to={{ pathname: "/post", state: { foo: nanda } }}>
         <button className="btn-sign-up">CreatePost</button>
       </Link>
+      <a
+        href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile._id}&room=${profile.name}`}
+        target="_blank"
+      >
+        check msgs !
+      </a>
     </div>
   );
 };
