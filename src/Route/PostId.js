@@ -57,11 +57,10 @@ const PostId = () => {
   return (
     show && (
       <div>
-        <h1>{profile.name}</h1>
         <h1>Your location is {result.location}</h1>
         <h1>{result.ownerName}</h1>
         <a
-          href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile._id}&room=${result.ownerName}`}
+          href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${result.ownerName}`}
           target="_blank"
         >
           chatnow !

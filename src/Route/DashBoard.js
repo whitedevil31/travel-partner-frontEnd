@@ -142,7 +142,7 @@ const DashBoard = () => {
         <button className="btn-sign-up">CreatePost</button>
       </Link>
       <a
-        href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile._id}&room=${profile.name}`}
+        href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${profile.name}`}
         target="_blank"
       >
         check msgs !
