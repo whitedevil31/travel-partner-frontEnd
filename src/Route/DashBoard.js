@@ -5,6 +5,7 @@ import "../App.css";
 
 const DashBoard = () => {
   var item;
+
   const location = useLocation();
   const nanda = location.state.tags || location.state.off;
   const [profile, getProfile] = useState({});
@@ -12,6 +13,7 @@ const DashBoard = () => {
   const [redmi, setRedmi] = useState(false);
   const [result, setResult] = useState([]);
   const { register, handleSubmit } = useForm();
+  const [picture, setPicture] = useState({});
 
   const history = useHistory();
   useEffect(() => {
@@ -26,6 +28,7 @@ const DashBoard = () => {
     }).then((response) => {
       response.json().then((res) => {
         console.log(res);
+        setPicture(res._id);
         getProfile(res);
       });
     });
@@ -49,17 +52,6 @@ const DashBoard = () => {
       setResult(get);
       console.log(result);
     }, 2000);
-
-    // setTimeout(async () => {
-    //   console.log(get);
-    // }, 3000);
-
-    // }).then((dataRes) => {
-    //   dataRes.json().then((res) => {
-    //     setResult(res);
-    //     console.log(result);
-    //   });
-    // });
   };
 
   const logoutHandler = () => {
@@ -111,11 +103,18 @@ const DashBoard = () => {
         <input type="submit" />
       </form>
       <button onClick={() => setRedmi(true)}>get my profile data</button>
+
       <button onClick={logoutHandler}>logout</button>
       {redmi && (
         <div>
           <h4>{profile.name}</h4>
           <h5>{profile.email}</h5>
+          <h5>{profile.pictures}</h5>
+          <img
+            src={`https://travel-partner-backend.herokuapp.com/users/${profile._id}/pictures`}
+            alt="loading"
+            className="profile"
+          />
         </div>
       )}
       {result && (
