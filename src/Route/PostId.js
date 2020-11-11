@@ -59,12 +59,19 @@ const PostId = () => {
       <div>
         <h1>Your location is {result.location}</h1>
         <h1>{result.ownerName}</h1>
-        <a
-          href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${result.ownerName}`}
-          target="_blank"
-        >
-          chatnow !
-        </a>
+        <img
+          src={`https://travel-partner-backend.herokuapp.com/users/${result.owner}/pictures`}
+          alt="loading"
+          className="profile"
+        />
+        <button>
+          <a
+            href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${result.ownerName}`}
+            target="_blank"
+          >
+            BUT
+          </a>
+        </button>
         <button
           onClick={() => {
             chatHandler(result.ownerName);

@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import "../App.css";
 import { useForm } from "react-hook-form";
-
+import { BeatLoader, BarLoader } from "react-spinners";
+import { css } from "@emotion/core";
+const loaderCSS = css`
+  margin-top: 25px;
+  margin-bottom: 25px;
+`;
 const Login = () => {
   let history = useHistory();
+  const [spinner, setSpinner] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
@@ -41,8 +47,10 @@ const Login = () => {
           name="password"
           ref={register}
         />
-        <input type="submit" />
+        <input type="submit" onClick={() => setSpinner(!spinner)} />
       </form>
+
+      <BarLoader css={loaderCSS} loading={spinner} color="blue" />
       <h4>if you dont have a account pls click here to register</h4>
       <Link to="/users">
         <button className="btn-sign-up">SIGNUP</button>

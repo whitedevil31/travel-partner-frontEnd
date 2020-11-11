@@ -59,9 +59,13 @@ input {
 .component {
   cursor: pointer;
 }
-
+.loading {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
 a {
   text-decoration: none;
+  color: black;
 }
 .profile {
   width: 130px;

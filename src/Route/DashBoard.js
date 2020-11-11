@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "../App.css";
-import { Moment, moment } from "moment";
+import moment from "moment";
 
 const DashBoard = () => {
   var item;
@@ -14,9 +14,7 @@ const DashBoard = () => {
   const [redmi, setRedmi] = useState(false);
   const [result, setResult] = useState([]);
   const { register, handleSubmit } = useForm();
-  const [picture, setPicture] = useState({});
 
-  const [set, get] = useState(null);
   const history = useHistory();
   useEffect(() => {
     const bearer = "Bearer " + nanda;
@@ -30,7 +28,7 @@ const DashBoard = () => {
     }).then((response) => {
       response.json().then((res) => {
         // console.log(res);
-        setPicture(res._id);
+
         getProfile(res);
       });
     });
@@ -82,7 +80,7 @@ const DashBoard = () => {
   return (
     <div>
       <h1>DashBoard</h1>
-      <h1> {set}</h1>
+
       <form onSubmit={handleSubmit(OnSubmitHandler)}>
         <input
           type="text"
@@ -113,7 +111,7 @@ const DashBoard = () => {
           <h4>{profile.name}</h4>
           <h5>{profile.email}</h5>
           <h5>{profile.pictures}</h5>
-          <h5>{profile._id}</h5>
+
           <img
             src={`https://travel-partner-backend.herokuapp.com/users/${profile._id}/pictures`}
             alt="loading"
