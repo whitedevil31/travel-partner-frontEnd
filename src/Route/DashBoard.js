@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "../App.css";
+import { Moment, moment } from "moment";
 
 const DashBoard = () => {
   var item;
@@ -15,6 +16,7 @@ const DashBoard = () => {
   const { register, handleSubmit } = useForm();
   const [picture, setPicture] = useState({});
 
+  const [set, get] = useState(null);
   const history = useHistory();
   useEffect(() => {
     const bearer = "Bearer " + nanda;
@@ -27,7 +29,7 @@ const DashBoard = () => {
       },
     }).then((response) => {
       response.json().then((res) => {
-        console.log(res);
+        // console.log(res);
         setPicture(res._id);
         getProfile(res);
       });
@@ -80,6 +82,7 @@ const DashBoard = () => {
   return (
     <div>
       <h1>DashBoard</h1>
+      <h1> {set}</h1>
       <form onSubmit={handleSubmit(OnSubmitHandler)}>
         <input
           type="text"
@@ -110,6 +113,7 @@ const DashBoard = () => {
           <h4>{profile.name}</h4>
           <h5>{profile.email}</h5>
           <h5>{profile.pictures}</h5>
+          <h5>{profile._id}</h5>
           <img
             src={`https://travel-partner-backend.herokuapp.com/users/${profile._id}/pictures`}
             alt="loading"
@@ -127,8 +131,13 @@ const DashBoard = () => {
                 componentHandler(item._id);
               }}
             >
+              <img
+                src={`https://travel-partner-backend.herokuapp.com/users/${item.owner}/pictures`}
+                alt="loading"
+                className="profile"
+              />
               <p>Name : {item.ownerName}</p>
-              <p> Travel date :{item.startDate}</p>
+              <p>Travel:{moment(item.startDate).format("DD-MM-YYYY")}</p>
               <p> Age :{item.ownerAge}</p>
               <p> Gender :{item.ownerGender}</p>
             </div>

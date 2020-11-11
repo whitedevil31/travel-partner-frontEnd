@@ -70,7 +70,7 @@ const PostId = () => {
             chatHandler(result.ownerName);
           }}
         >
-          chat now{" "}
+          chat now
         </button>
       </div>
     )
