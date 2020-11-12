@@ -72,6 +72,13 @@ const SignUp = () => {
         <input type="text" placeholder="email" name="email" ref={register} />
         <input
           type="text"
+          style={{ width: "400px" }}
+          placeholder="bio"
+          name="bio"
+          ref={register}
+        />
+        <input
+          type="text"
           placeholder="password"
           name="password"
           ref={register}

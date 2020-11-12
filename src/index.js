@@ -15,28 +15,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-// const imgData = axios.post(imgData);
-
-//   Axios.all([
-//     Axios.post("https://travel-partner-backend.herokuapp.com/users", {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }),
-
-//     Axios.post(
-//       "https://travel-partner-backend.herokuapp.com/users/me/avatar",
-//       fd,
-
-//     ),
-//   ]).then(
-//     Axios.spread((obj1, obj2) => {
-//       obj1.json().then((res) => {
-//         console.log(res);
-//       });
-//       if (obj1.status === 201) {
-//         history.push("/");
-//       }
-//       console.log(obj2);
-//     })
-//   );
