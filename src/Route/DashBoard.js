@@ -28,6 +28,7 @@ const DashBoard = () => {
     }).then((response) => {
       response.json().then((res) => {
         // console.log(res);
+        //deepak shrinivas
 
         getProfile(res);
       });
