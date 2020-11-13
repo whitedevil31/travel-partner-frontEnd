@@ -80,7 +80,8 @@ const DashBoard = () => {
 
   return (
     <div>
-      <header className="header">
+      <div className="header">
+        <h1>DashBoard</h1>
         <button onClick={logoutHandler} className="logout">
           logout
         </button>
@@ -93,8 +94,7 @@ const DashBoard = () => {
         >
           check msgs !
         </a>
-      </header>
-      <h1>DashBoard</h1>
+      </div>
 
       <form onSubmit={handleSubmit(OnSubmitHandler)}>
         <input
@@ -119,7 +119,6 @@ const DashBoard = () => {
         <input type="submit" />
       </form>
       <button onClick={() => setRedmi(true)}>get my profile data</button>
-
       {redmi && (
         <div>
           <h4>{profile.name}</h4>
@@ -155,7 +154,6 @@ const DashBoard = () => {
           ))}
         </div>
       )}
-
       {logout && <h1>logging out !!!!</h1>}
     </div>
   );
