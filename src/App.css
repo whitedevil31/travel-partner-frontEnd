@@ -35,7 +35,23 @@ input,
 .showUser {
   display: none;
 }
-
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.logout {
+  font-weight: bold;
+  width: 50px;
+  border-radius: 13px;
+  height: 30;
+  background-image: linear-gradient(
+    to right,
+    #ff4e50 0%,
+    #f9d423 51%,
+    #ff4e50 100%
+  );
+}
 .btn-sign-up {
   font-weight: bold;
 

@@ -79,6 +79,20 @@ const DashBoard = () => {
 
   return (
     <div>
+      <header className="header">
+        <button onClick={logoutHandler} className="logout">
+          logout
+        </button>
+        <Link to={{ pathname: "/post", state: { foo: nanda } }}>
+          <button className="btn-sign-up">CreatePost</button>
+        </Link>
+        <a
+          href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${profile.name}`}
+          target="_blank"
+        >
+          check msgs !
+        </a>
+      </header>
       <h1>DashBoard</h1>
 
       <form onSubmit={handleSubmit(OnSubmitHandler)}>
@@ -105,12 +119,10 @@ const DashBoard = () => {
       </form>
       <button onClick={() => setRedmi(true)}>get my profile data</button>
 
-      <button onClick={logoutHandler}>logout</button>
       {redmi && (
         <div>
           <h4>{profile.name}</h4>
           <h5>{profile.email}</h5>
-          <h5>{profile.pictures}</h5>
 
           <img
             src={`https://travel-partner-backend.herokuapp.com/users/${profile._id}/pictures`}
@@ -144,15 +156,6 @@ const DashBoard = () => {
       )}
 
       {logout && <h1>logging out !!!!</h1>}
-      <Link to={{ pathname: "/post", state: { foo: nanda } }}>
-        <button className="btn-sign-up">CreatePost</button>
-      </Link>
-      <a
-        href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${profile.name}`}
-        target="_blank"
-      >
-        check msgs !
-      </a>
     </div>
   );
 };
