@@ -12,12 +12,9 @@ const SignUp = () => {
   const history = useHistory();
   const fileHandler = (e) => {
     setAvatar(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
   const fileUploadHandler = () => {
     const fd = new FormData();
-    console.log(getAvatar);
-    console.log(getAvatar.name);
     fd.append("pictures", getAvatar, getAvatar.name);
     const bearer = "Bearer " + setDone.token;
 
@@ -29,39 +26,26 @@ const SignUp = () => {
       )
       .then((res) => {
         console.log(res);
+        if (res.status === 200) {
+          history.push("/");
+        }
       });
-    // fetch("https://travel-partner-backend.herokuapp.com/users/me/pictures", {
-    //   method: "POST",
-    //   withCredentials: true,
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: bearer,
-    //   },
-    //   body: fds,
-    // }).then((res) => console.log(res));
   };
 
   const onSubmit = (data) => {
-    // const fd = new FormData();
-    // fd.append("avatar", getAvatar, getAvatar.name);
+    fetch("https://travel-partner-backend.herokuapp.com/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).then((response) => {
+      response.json().then((res) => {
+        console.log("user data is " + res.user);
+        console.log("token is " + res.token);
+        getDone(res);
 
-    var dataHeader = { "Content-Type": "application/json" };
-    const jsonData = JSON.stringify(data);
-    const dataURL = "https://travel-partner-backend.herokuapp.com/users";
-    // const imgURL =
-    //   "https://travel-partner-backend.herokuapp.com/users/me/avatar";
-    const postData = axios.post(dataURL, jsonData, { headers: dataHeader });
-
-    // const imgData = axios.post(imgURL, fd);
-    axios.all([postData]).then(
-      axios.spread((obj1) => {
-        getDone(obj1.data);
         setShow(true);
-        // if (obj1.status === 201) {
-        //   history.push("/");
-        // }
-      })
-    );
+      });
+    });
   };
   return (
     <div>
@@ -70,10 +54,10 @@ const SignUp = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input type="text" placeholder="name" name="name" ref={register} />
         <input type="text" placeholder="email" name="email" ref={register} />
-        <input
+        <textarea
           type="text"
-          style={{ width: "400px" }}
           placeholder="bio"
+          className="bio"
           name="bio"
           ref={register}
         />
