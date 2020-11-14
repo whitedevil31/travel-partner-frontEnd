@@ -38,12 +38,14 @@ input,
 
 .header {
   background: gray;
-  height: 30vh;
+  height: 10vh;
   border-color: blue;
   border-width: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 40px;
+  padding-top: 20px;
 }
 .logout {
   font-weight: bold;
@@ -90,6 +92,16 @@ input,
 a {
   text-decoration: none;
   color: black;
+  font-weight: bold;
+}
+.a {
+  display: flex;
+  border: 2px solid black;
+  background: lightgray;
+  width: 140px;
+  justify-content: center;
+  border-radius: 4px;
+  margin: 30px;
 }
 .profile {
   width: 130px;
@@ -114,4 +126,10 @@ form {
   border-radius: 4px;
   height: 100px;
   width: 300px;
+  resize: none;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
 }

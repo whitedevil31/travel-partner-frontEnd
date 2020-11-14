@@ -48,37 +48,28 @@ const PostId = () => {
       });
     });
   }, []);
-  const chatHandler = (name) => {
-    console.log(name);
-    // window.location.assign(
-    //
-    // );
-  };
+
   return (
     show && (
       <div>
-        <h1>Your location is {result.location}</h1>
-        <h1>{result.ownerName}</h1>
         <img
           src={`https://travel-partner-backend.herokuapp.com/users/${result.owner}/pictures`}
           alt="loading"
           className="profile"
-        />
-        <button>
+        />{" "}
+        <h1>location : {result.location}</h1>
+        <h1>{result.ownerName}</h1>
+        <h1>places planned to visit :{result.places}</h1>
+        <h1>{result.ownerGender}</h1>
+        <h1>{result.ownerAge}</h1>
+        <div className="a">
           <a
             href={`https://whitedevil31-chatapp.herokuapp.com/chat.html?username=${profile.name}&room=${result.ownerName}`}
             target="_blank"
           >
-            BUT
+            CHAT NOW !
           </a>
-        </button>
-        <button
-          onClick={() => {
-            chatHandler(result.ownerName);
-          }}
-        >
-          chat now
-        </button>
+        </div>
       </div>
     )
   );

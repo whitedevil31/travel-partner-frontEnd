@@ -24,9 +24,8 @@ const CreatePost = () => {
       locations.json().then((location) => {
         setPosted(true);
         console.log(location);
-        setTimeout(() => {
-          history.push("/dashboard", { off: foo });
-        }, 900);
+
+        history.push("/dashboard", { off: foo });
       });
     });
   };
@@ -37,14 +36,23 @@ const CreatePost = () => {
       <form onSubmit={handleSubmit(OnSubmitHandler)}>
         <input
           type="text"
-          placeholder="location"
+          placeholder="city to visit"
           name="location"
           ref={register}
         />
+        <div className="inputs">
+          Journey starting date :
+          <input
+            type="text"
+            placeholder="(YYYY/MM/DD)"
+            name="startDate"
+            ref={register}
+          />
+        </div>
         <input
           type="text"
-          placeholder="starting date"
-          name="startDate"
+          placeholder="locations planning to visit"
+          name="places"
           ref={register}
         />
 

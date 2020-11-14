@@ -150,6 +150,7 @@ const DashBoard = () => {
               <p>Travel:{moment(item.startDate).format("DD-MM-YYYY")}</p>
               <p> Age :{item.ownerAge}</p>
               <p> Gender :{item.ownerGender}</p>
+              <p>locations planned :{item.places}</p>
             </div>
           ))}
         </div>

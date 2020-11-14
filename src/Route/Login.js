@@ -26,13 +26,11 @@ const Login = () => {
       response.json().then((res) => {
         const tokenId = res.token;
 
-        setTimeout(() => {
-          if (response.status === 200) {
-            history.push("/dashboard", {
-              tags: tokenId,
-            });
-          }
-        }, 900);
+        if (response.status === 200) {
+          history.push("/dashboard", {
+            tags: tokenId,
+          });
+        }
       });
     });
   };
